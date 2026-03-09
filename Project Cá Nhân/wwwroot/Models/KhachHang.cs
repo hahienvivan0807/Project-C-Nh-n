@@ -7,7 +7,7 @@ namespace Project_Cá_Nhân.Models
     [Table("Users")]
     public class Users
     {
-        public int Id { get; set; } // Khóa chính
+        public int Id { get; set; }
         public string HoTen { get; set; }
         public string SoDienThoai { get; set; }
         public string MatKhau { get; set; }
