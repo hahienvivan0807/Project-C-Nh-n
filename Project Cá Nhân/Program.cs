@@ -36,12 +36,12 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 // 4. Kích hoạt Static Files (CSS, JS, Hình ảnh trong wwwroot)
-app.UseStaticFiles(); // <--- SỬA LẠI: Dùng lệnh này chuẩn hơn cho .NET 8
+app.UseStaticFiles();
 
 app.UseRouting();
 
-// 5. Kích hoạt CORS (Phải đặt giữa UseRouting và UseAuthorization)
-app.UseCors("ChoPhepTatCa"); // <--- MỚI THÊM: Kích hoạt chính sách đã tạo ở trên
+// 5. Kích hoạt CORS
+app.UseCors("ChoPhepTatCa"); //Kích hoạt chính sách đã tạo ở trên
 
 app.UseAuthorization();
 
