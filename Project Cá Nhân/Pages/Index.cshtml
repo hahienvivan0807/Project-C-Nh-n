@@ -1,0 +1,322 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ Thống Đặt Nước Theo Khung Giờ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="toolbar">
+        <p class="text">☕️ UniCoffe</p>
+
+        <div class="khu-vuc-tai-khoan">
+            <a href="#" class="gio" onclick="moGioHang()">🛒</a>
+            <button id="nut-dang-nhap" class="nut-dn-dk" onclick="hienFormDangNhap()">
+                Đăng Nhập
+            </button>
+
+            <div id="khung-nguoi-dung" class="thong-tin-user" style="display: none;">
+                <span class="icon-user">👤</span>
+                <span id="ten-khach-hang">Khách</span>
+            </div>
+            <div id="menu-user" class="menu-user">
+                <div class="menu-item" onclick="doiMatKhau()">Đổi mật khẩu</div>
+                <div class="menu-item" onclick="dangXuat()">Đăng xuất</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="khung-chinh">
+
+        <div class="khu-vuc-mon">
+            <h2 class="tieu-de-muc">Thực Đơn Hôm Nay</h2>
+
+            <div class="luoi-san-pham">
+                <div class="the-san-pham" data-loai="cafe">
+                    <img src="/images/banner-18.png" alt="Cafe">
+                    <div class="thong-tin-mon">
+                        <h3>Cà Phê Sữa Đá</h3>
+                        <p class="mo-ta-ngan">Đậm đà hương vị truyền thống</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">29.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,1)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham" data-loai="tra">
+                    <img src="/images/banner-19.png" alt="Tra">
+                    <div class="thong-tin-mon">
+                        <h3>Trà Đào Cam Sả</h3>
+                        <p class="mo-ta-ngan">Thanh mát giải nhiệt mùa hè</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">45.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,2)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham" data-loai="banh">
+                    <img src="/images/banner-4.png" alt="Banh">
+                    <div class="thong-tin-mon">
+                        <h3>Bánh Cookie Hạt</h3>
+                        <p class="mo-ta-ngan">Giòn tan, ít ngọt, tốt sức khỏe</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">15.000đ</span>
+                            <button class="nut-them" onclick="themvaogio(this,3)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham" data-loai="cafe">
+                    <img src="/images/banner-5.png" alt="Latte">
+                    <div class="thong-tin-mon">
+                        <h3>Latte Nóng</h3>
+                        <p class="mo-ta-ngan">Hương vị nhẹ nhàng, béo ngậy</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">35.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,4)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham" data-loai="cafe">
+                    <img src="/images/banner-6.png" alt="Cafe Muoi" data-loai="cafe">
+                    <div class="thong-tin-mon">
+                        <h3>Cà Phê Muối</h3>
+                        <p class="mo-ta-ngan">Vị mặn béo của kem quyện cafe đậm đà</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">35.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,5)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham" data-loai="cafe">
+                    <img src="/images/banner-20.png" alt="Bac Xiu">
+                    <div class="thong-tin-mon">
+                        <h3>Bạc Xỉu Sài Gòn</h3>
+                        <p class="mo-ta-ngan">Nhiều sữa ít cafe, ngọt ngào dễ uống</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">29.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,6)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham" data-loai="cafe">
+                    <img src="/images/banner-8.png" alt="Americano">
+                    <div class="thong-tin-mon">
+                        <h3>Americano Đá</h3>
+                        <p class="mo-ta-ngan">Cafe tươi mát, ít calo, tỉnh táo tức thì</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">25.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,7)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham">
+                    <img src="/images/banner-9.png" alt="Macchiato">
+                    <div class="thong-tin-mon">
+                        <h3>Caramel Macchiato</h3>
+                        <p class="mo-ta-ngan">Sự kết hợp giữa vani và caramel</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">45.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,8)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="the-san-pham" data-loai="daxay">
+                    <img src="/images/banner-10.png" alt="Matcha">
+                    <div class="thong-tin-mon">
+                        <h3>Matcha Đá Xay</h3>
+                        <p class="mo-ta-ngan">Trà xanh Nhật Bản xay cùng kem sữa</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">49.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,9)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham">
+                    <img src="/images/banner-11.png" alt="Cookie" data-loai="banh">
+                    <div class="thong-tin-mon">
+                        <h3>Cookie Cream</h3>
+                        <p class="mo-ta-ngan">Bánh Oreo xay nhuyễn cùng kem vani</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">49.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,10)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham">
+                    <img src="/images/banner-12.png" alt="Socola">
+                    <div class="thong-tin-mon">
+                        <h3>Socola Đá Xay</h3>
+                        <p class="mo-ta-ngan">Đậm vị socola, phủ lớp kem béo ngậy</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">45.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,11)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham">
+                    <img src="/images/banner-13.png" alt="Chanh Tuyet">
+                    <div class="thong-tin-mon">
+                        <h3>Chanh Tuyết</h3>
+                        <p class="mo-ta-ngan">Chua dịu, mát lạnh, xay nhuyễn mịn</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">30.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,12)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="the-san-pham" data-loai="banh">
+                    <img src="/images/banner-14.png" alt="Tiramisu">
+                    <div class="thong-tin-mon">
+                        <h3>Bánh Tiramisu</h3>
+                        <p class="mo-ta-ngan">Bánh hương cafe, mềm mịn tan trong miệng</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">35.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,13)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="the-san-pham">
+                    <img src="/images/banner-15.png" alt="Croissant">
+                    <div class="thong-tin-mon">
+                        <h3>Croissant Trứng Muối</h3>
+                        <p class="mo-ta-ngan">Vỏ giòn rụm, nhân trứng muối tan chảy</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">32.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,14)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="the-san-pham" data-loai="banh">
+                    <img src="/images/banner-16.png" alt="Banh Mi">
+                    <div class="thong-tin-mon">
+                        <h3>Bánh Mì Que Pate</h3>
+                        <p class="mo-ta-ngan">Nóng hổi, giòn tan, pate béo ngậy</p>
+                        <div class="hang-gia">
+                            <span class="gia-tien">12.000đ</span>
+                           <button class="nut-them" onclick="themvaogio(this,15)">Thêm +</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="thanh-ben-phai">
+            <div class="khoi-ben-phai">
+                <h3 class="tieu-de-nho">Danh Mục</h3>
+                <ul class="danh-sach-muc">
+                    <li><a href="#" onclick="locSanPham('tatca')">📜 Tất Cả Món</a></li>
+                    <li><a href="#" onclick="locSanPham('cafe')">☕️ Cà Phê Việt Nam</a></li>
+                    <li><a href="#" onclick="locSanPham('tra')">🍵 Trà Trái Cây</a></li>
+                    <li><a href="#" onclick="locSanPham('daxay')">🧊 Đá Xay (Frappe)</a></li>
+                    <li><a href="#" onclick="locSanPham('banh')">🍰 Bánh</a></li>
+                </ul>
+            </div>
+
+            <div class="khoi-ben-phai">
+                <h3 class="tieu-de-nho">🔥 Bán Chạy Nhất</h3>
+                <div class="mon-goi-y">
+                    <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=100" alt="Hot">
+                    <div>
+                        <h4>Trà Sữa Nướng</h4>
+                        <span>55.000đ</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="chan-trang">
+        <div class="noi-dung-footer">
+            <div class="cot-footer">
+                <h4>Về UniCoffe</h4>
+                <p>Hệ thống đặt nước theo khung giờ tiện lợi, mang đến trải nghiệm cà phê hiện đại cho sinh viên và dân văn phòng.</p>
+            </div>
+            <div class="cot-footer">
+                <h4>Liên Hệ</h4>
+                <p>📍 673 Đường Trần Nam Phú, Ninh Kiều, TP Cần Thơ</p>
+                <p>📞 Hotline: 1900 1234</p>
+                <p>📧 support@unicoffe.vn</p>
+            </div>
+            <div class="cot-footer">
+                <h4>Giờ Mở Cửa</h4>
+                <p>Thứ 2 - Thứ 6: 7:00 - 21:00</p>
+                <p>Thứ 7 - CN: 8:00 - 22:00</p>
+            </div>
+        </div>
+        <div class="ban-quyen">
+            <p>&copy; 2024 UniCoffe. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Yêu Cầu Đăng Nhập -->
+    <div id="man-che-mo" class="man-che" onclick="dongForm()"></div>
+    <div id="khung-dang-nhap-dang-ky" class="khung-popup">
+        <span class="nut-dong-popup" onclick="dongForm()">×</span>
+        <div class="thanh-tab">
+            <button class="tab-btn dang-chon" onclick="chuyenTab('dang-nhap')">Đăng Nhập</button>
+            <button class="tab-btn" onclick="chuyenTab('dang-ky')">Đăng Ký</button>
+        </div>
+
+        <div id="form-dang-nhap" class="noi-dung-form">
+            <input type="text" id="dn-sdt" placeholder="Số điện thoại" class="o-nhap">
+            <input type="password" id="dn-matkhau" placeholder="Mật khẩu" class="o-nhap">
+            <button class="nut-xac-nhan" onclick="xuLyDangNhap()">Đăng Nhập Ngay</button>
+        </div>
+
+        <div id="form-dang-ky" class="noi-dung-form" style="display: none;">
+            <input type="text" id="dk-hoten" placeholder="Họ và tên của bạn" class="o-nhap">
+            <input type="text" id="dk-sdt" placeholder="Số điện thoại" class="o-nhap">
+            <input type="password" id="dk-matkhau" placeholder="Mật khẩu" class="o-nhap">
+            <input type="password" id="dk-nhaplaimatkhau" placeholder="Nhập lại mật khẩu" class="o-nhap">
+            <button class="nut-xac-nhan" onclick="xuLyDangKy()">Tạo Tài Khoản</button>
+        </div>
+    </div>
+    <div id="form-doi-matkhau" class="khung-popup">
+        <span class="nut-dong-popup" onclick="dongFormDoiMK()">×</span>
+
+        <h3 style="color:#3d3f44; margin-bottom:15px;">Đổi mật khẩu</h3>
+
+        <input type="text" id="mk-sdt" placeholder="Số điện thoại" class="o-nhap">
+        <input type="password" id="mk-cu" placeholder="Mật khẩu Cũ" class="o-nhap">
+        <input type="password" id="mk-moi" placeholder="Mật khẩu Mới" class="o-nhap">
+        <input type="password" id="xacnhan-mk-moi" placeholder="Xác Nhận Mật khẩu Mới" class="o-nhap">
+        <button class="nut-xac-nhan" onclick="xuLyDoiPass()">Đổi mật khẩu</button>
+    </div>
+    <!-- Thông báo -->
+    <div id="thong-bao-custom" class="thong-bao">
+        <span id="noi-dung-thong-bao">Nội dung thông báo ở đây</span>
+    </div>
+    <!-- Giỏ Hàng-->
+    <div id="popup-gio-hang" class="khung-popup">
+    <span class="nut-dong-popup" onclick="dongGioHang()">×</span>
+    <h3>Giỏ Hàng</h3>
+        <div class="chon-thoi-gian">
+            <label for="gio-nhan">Vui lòng chọn thời gian muốn nhận hàng</label>
+            <input type="time" id="gio-nhan" class="o-nhap">
+        </div>
+    <div id="danh-sach-gio"></div>
+    <button class="nut-xac-nhan" onclick="xacNhanDon()">Xác nhận đơn</button>
+</div>
+</body>
+</html>

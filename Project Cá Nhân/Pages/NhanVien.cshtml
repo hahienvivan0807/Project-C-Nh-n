@@ -1,0 +1,69 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Nhân Viên UniCoffe";
+        }
+<head>
+    <link rel="stylesheet" href="~/css/NhanVien.css">
+</head>
+<body>
+    <div class="container">
+        <div class="trang-nhan-vien">
+            <div class="nv-top-accent"></div>
+
+            <div class="container-tieude">
+                <div class="tieu-de">
+                    <span class="icon-nv">☕</span>
+                    <h2 class="ttnv">Thông Tin Nhân Viên</h2>
+                </div>
+            </div>
+
+            <div class="nv-avatar">
+                <div class="avatar-ring">
+                    <div class="avatar-inner">P</div>
+                </div>
+                <div class="nv-status"><span class="dot"></span> Đang làm việc</div>
+            </div>
+
+            <div class="nhanvien-text">
+                <div class="text-nv">
+                    <span class="label">Name</span>
+                    <span class="value" id="ten-nhanvien">Pin</span>
+                </div>
+                <div class="text-nv">
+                    <span class="label">Age</span>
+                    <span class="value" id="tuoi-nhanvien">19</span>
+                </div>
+                <div class="text-nv">
+                    <span class="label">Gender</span>
+                    <span class="value" id="gioitinh-nhanvien">Đực</span>
+                </div>
+                <div class="text-nv">
+                    <span class="label">Rank</span>
+                    <span class="value rank-badge" id="chucvu-nhanvien">Trader</span>
+                </div>
+            </div>
+
+            <div class="nv-footer">
+                <div class="shift-info">
+                    <span class="shift-label">Ca làm</span>
+                    <span class="shift-time">08:00 – 16:00</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="trang-don-hang">
+            <div class="container-tieude">
+                <div class="tieu-de">
+                    <span class="icon-dh">🧾</span>
+                    <h2>Danh Sách Đơn Hàng</h2>
+                    <span class="badge-count">1</span>
+                </div>
+            </div>
+
+            <div class="donhang-list" id="donhang-list">
+            </div>
+        </div>
+    </div>
+    <script src="/js/NhanVien.js"></script>
+</body>
