@@ -1,22 +1,17 @@
 ﻿let gioHang = [];
 function locSanPham(loaiCanTim) {
-    // 1. Lấy tất cả sản phẩm
     let cacSanPham = document.querySelectorAll('.the-san-pham');
 
-    // 2. Duyệt qua từng món
     cacSanPham.forEach(function (sanpham) {
-        // Lấy loại của món đó (nếu quên gắn data-loai thì nó sẽ là null)
         let loaiSanPham = sanpham.getAttribute('data-loai');
 
-        // 3. Logic lọc
         if (loaiCanTim === 'tatca') {
-            sanpham.style.display = 'block'; // Hiện tất cả
+            sanpham.style.display = 'block';
         } else {
-            // Kiểm tra: Món này có data-loai không VÀ có trùng với cái đang tìm không
             if (loaiSanPham === loaiCanTim) {
-                sanpham.style.display = 'block'; // Trùng thì hiện
+                sanpham.style.display = 'block';
             } else {
-                sanpham.style.display = 'none';  // Không trùng thì ẩn
+                sanpham.style.display = 'none';
             }
         }
     });
@@ -63,7 +58,6 @@ function chuyenTab(loaiTab) {
     }
 }
 
-// Biến lưu trạng thái (tạm thời lưu trên RAM trình duyệt)
 let daDangNhap = false;
 
 async function xuLyDangNhap() {
@@ -117,7 +111,6 @@ async function xuLyDangKy() {
         MatKhau: pass
     };
 
-    // 3. Gửi sang C# (Backend)
     try {
         let response = await fetch('/api/simpleauth/dangky', {
             method: 'POST',
@@ -140,8 +133,6 @@ async function xuLyDangKy() {
 }
 
 // --- 4. Logic cho nút "Thêm" (Mua hàng) ---
-// Ông tìm cái hàm xử lý click nút Thêm trong code cũ của ông, 
-// và thêm dòng kiểm tra này vào đầu hàm đó:
 
 document.addEventListener('keydown', function (event) {
     if (event.key === "Escape") {
@@ -164,14 +155,12 @@ function hienThongBao(noiDung) {
 const khungUser = document.getElementById("khung-nguoi-dung");
 const menuUser = document.getElementById("menu-user");
 
-// Bấm vào user thì hiện menu
 khungUser.addEventListener("click", function (event) {
     event.stopPropagation();
     menuUser.style.display =
         menuUser.style.display === "flex" ? "none" : "flex";
 });
 
-// Bấm ra ngoài thì ẩn menu
 document.addEventListener("click", function () {
     menuUser.style.display = "none";
 });
@@ -219,7 +208,7 @@ async function xuLyDoiPass(){
         hienThongBao("Không kết nối được với server");
     }
 }
-//Giỏ hàng gửi lên database
+//gửi lên database
 async function xacNhanDon() {
     let gioNhan = document.getElementById("gio-nhan").value;
     if (gioHang.length === 0) {
